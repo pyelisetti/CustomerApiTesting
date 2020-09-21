@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" verbose="0" name="Failed suite [Sanity Suite]">
+  <parameter name="postId" value="post1"/>
+  <parameter name="userId" value="user1"/>
+  <parameter name="BaseURI" value="http://qainterview.merchante-solutions.com:3030/"/>
+  <test thread-count="5" verbose="0" name="postTests(failed)">
+    <classes>
+      <class name="com.merchant.api.PostTest">
+        <methods>
+          <include name="setUp"/>
+          <include name="beforeClass"/>
+          <include name="updatePost"/>
+          <include name="createPost"/>
+          <include name="getPost"/>
+        </methods>
+      </class> <!-- com.merchant.api.PostTest -->
+    </classes>
+  </test> <!-- postTests(failed) -->
+</suite> <!-- Failed suite [Sanity Suite] -->

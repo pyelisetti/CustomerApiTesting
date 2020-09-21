@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Command line suite]" verbose="0">
+  <test thread-count="5" name="Command line test(failed)" verbose="0">
+    <classes>
+      <class name="com.merchant.api.CommentTest">
+        <methods>
+          <include name="getComment"/>
+          <include name="setUp"/>
+          <include name="updateComment"/>
+          <include name="createComment"/>
+          <include name="beforeClass"/>
+        </methods>
+      </class> <!-- com.merchant.api.CommentTest -->
+      <class name="com.merchant.api.PostTest">
+        <methods>
+          <include name="setUp"/>
+          <include name="beforeClass"/>
+          <include name="updatePost"/>
+          <include name="createPost"/>
+          <include name="getPost"/>
+        </methods>
+      </class> <!-- com.merchant.api.PostTest -->
+      <class name="com.merchant.api.UserTest">
+        <methods>
+          <include name="beforeClass"/>
+          <include name="getUser"/>
+          <include name="beforeClass"/>
+          <include name="createUser"/>
+          <include name="updateUser"/>
+        </methods>
+      </class> <!-- com.merchant.api.UserTest -->
+    </classes>
+  </test> <!-- Command line test(failed) -->
+</suite> <!-- Failed suite [Command line suite] -->

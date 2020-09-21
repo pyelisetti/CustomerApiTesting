@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="InterviewTests">
+   
+   
+    <parameter name="BaseURI" value="http://qainterview.merchante-solutions.com:3030/"/>
+    
+    <test name="smoke">
+        <packages>
+      		<package name="com.merchant" />
+   		</packages>
+    
+    </test>
+
+
+</suite>
