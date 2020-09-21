@@ -18,10 +18,12 @@ import java.time.Instant;
 public class PostTest extends TestBase {
 	
 	private User user = null;
+	private Post post = null;
 
 	@BeforeClass
 	public void setUp() {
-		RestAssured.basePath = "/posts";
+		
+	   RestAssured.basePath = "/posts";
 		
 	   user = DataCache.getUser();
 	   ObjectCreatorService.createUser(user);
@@ -30,28 +32,17 @@ public class PostTest extends TestBase {
 	@Test
 	public void createPost() {
 
-		Post post = DataCache.getPost(user);
+		post = DataCache.getPost(user);
 		ObjectCreatorService.createPost(user, post);
 	}
 
-	@Test
+	@Test(dependsOnMethods = "createPost")
 	public void getPost() {
-
-		Post post = DataCache.getPost(user);
-		ObjectCreatorService.createPost(user, post);
-
-
 		given().when().get("/" + post.getId()).then().statusCode(200).spec(post.getPostSpec());
 	}
 
-	@Test
+	@Test(dependsOnMethods = "createPost")
 	public void updatePost() {
-
-		Post post = DataCache.getPost(user);
-		ObjectCreatorService.createPost(user, post);
-		
-		
-
 		given().accept(ContentType.JSON).contentType(ContentType.JSON).body(post).when().put("/" + post.getId()).then()
 				.statusCode(200).spec(post.getPostSpec()).extract().path("id").toString();
 	}

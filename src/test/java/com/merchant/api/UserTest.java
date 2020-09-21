@@ -31,18 +31,12 @@ public class UserTest extends TestBase {
 
 	@Test
 	public void createUser() {
-		/*
-		given().accept(ContentType.JSON).contentType(ContentType.JSON).body(user).
-				when().post().then().
-				statusCode(201).
-				spec(user.getUserSpec());*/
-		
-		ObjectCreatorService.createUser(user);
 
+		ObjectCreatorService.createUser(user);
 		Reporter.log("user id = " + true);
 	}
 	
-	@Test
+	@Test(dependsOnMethods = "createUser")
 	public void getUser() {
 		
 		given().
@@ -54,7 +48,7 @@ public class UserTest extends TestBase {
 	}
 	
 	
-	@Test
+	@Test(dependsOnMethods = "createUser")
 	public void updateUser() {
 		
 		user.setFirstName("NewFirstName");

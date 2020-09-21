@@ -2,9 +2,6 @@ package com.merchant.api;
 
 import static io.restassured.RestAssured.given;
 
-import java.time.Instant;
-
-import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -21,6 +18,8 @@ public class CommentTest extends TestBase {
 	private User user;
 	private User user2;
 	private Post post;
+	
+	private Comment comment;
 
 
 	@BeforeClass
@@ -43,26 +42,20 @@ public class CommentTest extends TestBase {
 	@Test
 	public void createComment() {
 
-		Comment comment =  DataCache.getComment(user, post);		
+	    comment =  DataCache.getComment(user, post);		
 		ObjectCreatorService.createComment(user, post, comment);
 
 	}
 
-	@Test
+	@Test(dependsOnMethods = "createComment")
 	public void getComment() {
-		
-		Comment comment =  DataCache.getComment(user, post);
-		ObjectCreatorService.createComment(user, post, comment);
 		
 		given().when().get("/" + comment.getId()).then().statusCode(200).spec(comment.getCommentSpec());
 
 	}
 
-	@Test
+	@Test(dependsOnMethods = "createComment")
 	public void updateComment() {
-		
-		Comment comment =  DataCache.getComment(user, post);		
-		ObjectCreatorService.createComment(user, post, comment);
 
 		comment.setBody("This comment is udpated");
 		
