@@ -1,19 +1,16 @@
-package com.merchant.api;
-
-import org.testng.Reporter;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
-
-import com.merchant.data.DataCache;
-import com.merchant.data.Post;
-import com.merchant.data.User;
-
-import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
+package com.merchant.api.tests;
 
 import static io.restassured.RestAssured.given;
 
-import java.time.Instant;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+import com.merchant.api.data.Post;
+import com.merchant.api.data.RandomDataGenerator;
+import com.merchant.api.data.User;
+
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 
 public class PostTest extends TestBase {
 	
@@ -25,14 +22,14 @@ public class PostTest extends TestBase {
 		
 	   RestAssured.basePath = "/posts";
 		
-	   user = DataCache.getUser();
+	   user = RandomDataGenerator.getUser();
 	   ObjectCreatorService.createUser(user);
 	}
 
 	@Test
 	public void createPost() {
 
-		post = DataCache.getPost(user);
+		post = RandomDataGenerator.getPost(user);
 		ObjectCreatorService.createPost(user, post);
 	}
 
@@ -46,5 +43,6 @@ public class PostTest extends TestBase {
 		given().accept(ContentType.JSON).contentType(ContentType.JSON).body(post).when().put("/" + post.getId()).then()
 				.statusCode(200).spec(post.getPostSpec()).extract().path("id").toString();
 	}
+	
 
 }

@@ -1,4 +1,4 @@
-package com.merchant.api;
+package com.merchant.api.tests;
 
 import org.testng.ITestContext;
 import org.testng.annotations.BeforeClass;

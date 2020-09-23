@@ -1,14 +1,14 @@
-package com.merchant.api;
+package com.merchant.api.tests;
 
 import static io.restassured.RestAssured.given;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import com.merchant.data.Comment;
-import com.merchant.data.DataCache;
-import com.merchant.data.Post;
-import com.merchant.data.User;
+import com.merchant.api.data.Comment;
+import com.merchant.api.data.Post;
+import com.merchant.api.data.RandomDataGenerator;
+import com.merchant.api.data.User;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
@@ -26,14 +26,14 @@ public class CommentTest extends TestBase {
 	public void setUp() {
 		RestAssured.basePath = "/comments";
 		
-		 user = DataCache.getUser();
+		 user = RandomDataGenerator.getUser();
 		 ObjectCreatorService.createUser(user);
 		 
-		 user2 = DataCache.getUser();
+		 user2 = RandomDataGenerator.getUser();
 		 ObjectCreatorService.createUser(user2);
 
 
-		 post = DataCache.getPost(user);
+		 post = RandomDataGenerator.getPost(user);
 		 ObjectCreatorService.createPost(user, post);
 		 
 		
@@ -42,7 +42,7 @@ public class CommentTest extends TestBase {
 	@Test
 	public void createComment() {
 
-	    comment =  DataCache.getComment(user, post);		
+	    comment =  RandomDataGenerator.getComment(user, post);		
 		ObjectCreatorService.createComment(user, post, comment);
 
 	}

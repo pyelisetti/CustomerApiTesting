@@ -1,10 +1,10 @@
-package com.merchant.api;
+package com.merchant.api.tests;
 
 import static io.restassured.RestAssured.given;
 
-import com.merchant.data.Comment;
-import com.merchant.data.Post;
-import com.merchant.data.User;
+import com.merchant.api.data.Comment;
+import com.merchant.api.data.Post;
+import com.merchant.api.data.User;
 
 import io.restassured.http.ContentType;
 
@@ -34,4 +34,6 @@ public class ObjectCreatorService {
 		.statusCode(201).spec(comment.getCommentSpec()).extract().path("id").toString();
 		comment.setId(id);
 	}
+	
+	
 }

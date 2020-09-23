@@ -30,25 +30,6 @@
 		    <version>2.11.2</version>
 		</dependency>		
 	</dependencies>
-	
-	
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.18.1</version>
-				<configuration>
-					<skipTests>false</skipTests>
-					<suiteXmlFiles>
-						<suiteXmlFile>testng.xml</suiteXmlFile>
-					</suiteXmlFiles>
-				</configuration>
-			</plugin>
-
-		</plugins>
-	</build> 
 
     <profiles>
         <profile>
@@ -63,39 +44,17 @@
                             <suiteXmlFiles>
                                 <suiteXmlFile>testng-regression.xml</suiteXmlFile>
                             </suiteXmlFiles>
-                        </configuration>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-compiler-plugin</artifactId>
-                        <configuration>
-                            <source>1.8</source>
-                            <target>1.8</target>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>smoke</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>2.18.1</version>
-                        <configuration>
-                            <suiteXmlFiles>
-                                <suiteXmlFile>testng-smoke.xml</suiteXmlFile>
-                            </suiteXmlFiles>
-                        </configuration>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-compiler-plugin</artifactId>
-                        <configuration>
-                            <source>1.8</source>
-                            <target>1.8</target>
+                            
+							 <properties>
+							   <property>
+							     <name>parallel</name>
+							     <value>classes</value>
+							   </property>
+							   <property>
+							     <name>threadCount</name>
+							     <value>3</value>
+							   </property>
+							 </properties>                           
                         </configuration>
                     </plugin>
                 </plugins>

@@ -1,4 +1,4 @@
-package com.merchant.data;
+package com.merchant.api.data;
 
 import static org.hamcrest.Matchers.*;
 
