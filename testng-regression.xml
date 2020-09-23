@@ -8,7 +8,7 @@
 
      <test name="userTests">
         <classes>
-            <class name="com.merchant.api.UserTest">
+            <class name="com.merchant.api.tests.UserTest">
                 <methods>
                     <include name="createUser"/>
                     <include name="getUser"/>
@@ -22,7 +22,7 @@
 
     <test name="postTests">
         <classes>
-            <class name="com.merchant.api.PostTest">
+            <class name="com.merchant.api.tests.PostTest">
                 <methods>
                     <include name="createPost"/>
                    <include name="getPost"/>  
@@ -35,7 +35,7 @@
     
     <test name="commentTests">
         <classes>
-            <class name="com.merchant.api.CommentTest">
+            <class name="com.merchant.api.tests.CommentTest">
                 <methods>
                     <include name="createComment"/>
                     <include name="getComment"/>
