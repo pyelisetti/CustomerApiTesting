@@ -6,14 +6,9 @@ pipeline {
         }
     }
     stages {
-        stage('Build') { 
-            steps {
-                sh 'mvn test -Pregression' 
-            }
-        }
         stage('Test') {
             steps {
-                sh 'mvn test'
+                sh 'mvn test -Pregression'
             }
             post {
                 always {
