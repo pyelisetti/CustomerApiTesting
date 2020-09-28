@@ -10,11 +10,6 @@ pipeline {
             steps {
                 sh 'mvn test -Pregression'
             }
-            post {
-                always {
-                    junit 'target/surefire-reports/*.xml'
-                }
-            }
         }
     }
 }
